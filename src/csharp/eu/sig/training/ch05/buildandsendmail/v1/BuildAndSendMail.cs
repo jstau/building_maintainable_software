@@ -2,10 +2,9 @@
 {
     public class BuildAndSendMail
     {
+
         // tag::buildAndSendMail[]
-        public void DoBuildAndSendMail(MailMan m, string firstName, string lastName,
-            string division, string subject, MailFont font, string message1,
-            string message2, string message3)
+        public void DoBuildAndSendMail(MailMan m, Person person, string subject, MailFont font, Message message)
         {
             // Format the email address
             string mId = $"{firstName[0]}.{lastName.Substring(0, 7)}" +
@@ -17,6 +16,23 @@
             m.Send(mId, subject, mMessage);
         }
         // end::buildAndSendMail[]
+
+
+        public class Message
+        {
+            public string Subject { get; set; }
+            public string Message1 { get; set; }
+            public string Message2 { get; set; }
+            public string Message3 { get; set; }
+
+        }
+
+        public class Person
+        {
+            public string FirstName { get; set; }
+            public string LastNAme { get; set; }
+            public string Division { get; set; }
+        }
 
         public MailMessage FormatMessage(MailFont font, string s)
         {
